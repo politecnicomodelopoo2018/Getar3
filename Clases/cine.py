@@ -1,4 +1,4 @@
-from db import DB
+from Clases.db import DB
 
 class Cine(object):
     idCine = None
