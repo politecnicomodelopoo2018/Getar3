@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route('/success/<name>')
 def success(name):
-   return 'welcome %s' % name
+   return 'Bienvenido %s' % name
 
 @app.route('/login')
 def login():
