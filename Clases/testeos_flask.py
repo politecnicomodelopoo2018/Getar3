@@ -1,24 +1,23 @@
-from flask import Flask
-from flask import request
-from flask import render_template
-
+from flask import *
 app = Flask(__name__)
-"""
-@app.route('/')
-def pagina_principal():
-    return 'Bienvenido a GetarCine'
+
+@app.route('/success/<name>')
+def success(name):
+   return 'welcome %s' % name
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/esto',methods = ['POST', 'GET'])
+def esto():
+   if request.method == 'POST':
+      user = request.form['nm']
+      return redirect(url_for('success',name = user))
+   else:
+      user = request.args.get('nm')
+      return redirect(url_for('success',name = user))
 
 if __name__ == '__main__':
-    app.run(debug = True)
-"""
-
-@app.route('/')
-def params():
-    #parametro = request.args.get('parametro1','no existe el parametro')
-    hola = "Hola Mundo"
-    return render_template("index.html", var = hola)
-    #return 'el parametro es: {}'.format(parametro)
-
-if __name__ == '__main__':
-    app.run(debug = True)
+   app.run(debug = True)
 
