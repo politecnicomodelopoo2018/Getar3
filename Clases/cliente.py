@@ -1,4 +1,4 @@
-from Clases.db import DB
+from db import DB
 
 class Cliente(object):
     dni = None
@@ -6,5 +6,5 @@ class Cliente(object):
     apellido = None
 
     def Dar_de_Alta_Cliente(self):
-        DB.run("Insert into Cliente(dni,nombre,apellido) VALUES(" + str(self.dni) + ", '" + self.nombre + "', '" + self.apellido + "');")
+        DB.run("Insert into Cliente(dni,nombre,apellido) VALUES("'NULL'", '" + self.nombre + "', '" + self.apellido + "');")
 
