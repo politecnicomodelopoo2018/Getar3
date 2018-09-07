@@ -1,4 +1,4 @@
-from Clases.db import DB
+from db import DB
 
 class Horario(object):
     idHorario = None
