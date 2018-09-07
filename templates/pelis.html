@@ -1,0 +1,12 @@
+<html>
+	<head>
+		<title> Menu </title>
+	</head>
+	<body>
+				<p>Bienvenido {{nombre}}</p>
+			    <p>¿Qué película desea ver?: </p>
+				{% for item in lista_peliculas %}
+					<a href="/pelis">item.nombrePelicula</a>
+				{% endfor %}
+	</body>
+</html>
