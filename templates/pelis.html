@@ -1,12 +1,12 @@
 <html>
 	<head>
-		<title> Menu </title>
+		<title> Seleccion de Pelicula </title>
 	</head>
 	<body>
-				<p>Bienvenido {{nombre}}</p>
+				<p>Bienvenido {{nombre}} {{apellido}}</p>
 			    <p>¿Qué película desea ver?: </p>
-				{% for item in lista_peliculas %}
-					<a href="/pelis">item.nombrePelicula</a>
+				{% for item in lista_peliculas: %}
+				<a> {{item.nombrePelicula}}</a>
 				{% endfor %}
 	</body>
 </html>
