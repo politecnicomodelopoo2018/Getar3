@@ -29,11 +29,13 @@ def Pelis(nombre,apellido):
     lista_peliculas = Pelicula.ListarPeliculas()
     return render_template('pelis.html', nombre=nombre, apellido=apellido, lista_peliculas=lista_peliculas)
 
-@app.route('/cines')
+@app.route('/cines',methods = ['GET'])
 def Cines():
-    Pelicula.InfoPeli()
+    nombrePeli = request.args.get('nombrePeli')
+    P = Pelicula.InfoPeli(nombrePeli)
     lista_cines = Cine.ListarCines()
-    return render_template('cines.html', lista_cines=lista_cines)
+    return render_template('cines.html', lista_cines=lista_cines,P=P)
+
 
 if __name__ == '__main__':
    app.run(debug = True)

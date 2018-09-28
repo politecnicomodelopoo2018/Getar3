@@ -5,6 +5,9 @@ class Cine(object):
     idCine = None
     nombre = None
 
+    def __init__(self):
+        self.lista_de_horarios = []
+
     def Dar_de_Alta_Cine(self):
         DB.run("Insert into Cine(idCine, nombre) VALUES(NULL,'" + self.nombre + "');")
 
