@@ -13,9 +13,9 @@ class Pelicula(object):
     @staticmethod
     def ListarPeliculas():
         cursorPeli = DB().run("Select * from Pelicula")
-        Peli = Pelicula()
         listaPeliculas = []
         for item in cursorPeli:
+            Peli = Pelicula()
             Peli.idPelicula = item["idPelicula"]
             Peli.nombre = item["nombre"]
             Peli.genero = item["genero"]
@@ -23,6 +23,13 @@ class Pelicula(object):
             listaPeliculas.append(Peli)
         return listaPeliculas
 
-
-
-
+    @staticmethod
+    def InfoPeli(nombrePeli):
+        cursorInfoPeli = DB.run("Select * from Pelicula where nombre = ('"+nombrePeli+"');")
+        P = Pelicula()
+        for item in cursorInfoPeli:
+            P.idPelicula = item["idPelicula"]
+            P.nombre = item["nombre"]
+            P.genero = item["genero"]
+            P.estrellas = item["estrellas"]
+        return P
