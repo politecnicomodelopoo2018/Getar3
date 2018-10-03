@@ -38,12 +38,17 @@ def Cines():
 
 @app.route('/horarios',methods = ['GET'])
 def Fecha_Hora():
-    return render_template('horarios.html')
+    nombreCine = request.args.get('nombreCine')
+    C = Cine.InfoCine(nombreCine)
+    lista_horarios = Cine.GetHorariosCine(nombreCine)
+    return render_template('horarios.html',lista_horarios=lista_horarios,C=C)
 
 if __name__ == '__main__':
    app.run(debug = True)
 
 
 
-
-
+# 1. RESERVA DE ENTRADA - GUARDAR EN db LA RESERVA (MOSTRAR SOLO LAS BUTACAS LIBRES)
+# 2. VER RESERVAS ACTUALES DE USUARIO
+# 3. ADMINISTRACION PARA AGREGAR MODIFICAR ELIMINAR PELICULAS
+# 4. LOGIN DE USUARIO CON SESSION

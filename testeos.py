@@ -1,46 +1,13 @@
 from pelicula import Pelicula
 from cine import Cine
-
-p = Pelicula()
-p.nombre= 'Avengers'
-p.genero = 'Accion'
-p.estrellas = 5
-p.Dar_de_Alta_Pelicula()
+from sala import Sala
+from horario import Horario
 
 
-p = Pelicula()
-p.nombre = 'Proyecto X'
-p.genero = 'Comedia'
-p.estrellas = 4
-p.Dar_de_Alta_Pelicula()
-
-
-p = Pelicula()
-p.nombre = 'Daredevil'
-p.genero = 'Accion'
-p.estrellas = 1
-p.Dar_de_Alta_Pelicula()
-
-p = Pelicula()
-p.nombre = 'Invictus'
-p.genero = 'drama'
-p.estrellas = 4
-p.Dar_de_Alta_Pelicula()
-
-
-
-C = Cine()
-C.nombre = 'GetarCine Belgrano'
-C.Dar_de_Alta_Cine()
-
-C = Cine()
-C.nombre = 'GetarCine Moreno'
-C.Dar_de_Alta_Cine()
-
-C = Cine()
-C.nombre = 'GetarCine Salta'
-C.Dar_de_Alta_Cine()
-
-C = Cine()
-C.nombre = 'GetarCine Cordoba'
-C.Dar_de_Alta_Cine()
+H = Horario()
+H.idHorario = 'NULL'
+H.fecha_hora = "Jueves 4 de Octubre 15:00"
+H.Sala_idSala = 1
+H.Pelicula_idPelicula = 33
+H.Cine_idCine = 33
+H.Dar_de_Alta_Horario()
