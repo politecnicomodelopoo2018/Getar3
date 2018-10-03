@@ -1,0 +1,12 @@
+<html>
+	<head>
+		<title> Seleccionar Horario </title>
+	</head>
+	<body>
+				<p>Elija en que horario quiere ver la pelicula: </p>
+				{% for item in lista_horarios: %}
+				<br>
+				<a href="/horarios"> {{item.dia}}</a>
+				{% endfor %}
+	</body>
+</html>
