@@ -4,6 +4,7 @@ from pelicula import Pelicula
 from cine import Cine
 from horario import Horario
 from sala import Sala
+from reserva import Reserva
 
 app = Flask(__name__)
 
@@ -28,15 +29,18 @@ def login():
 @app.route('/Pelis/<nombre>/<apellido>/')
 def Pelis(nombre,apellido):
     lista_peliculas = Pelicula.ListarPeliculas()
-    return render_template('pelis.html', nombre=nombre, apellido=apellido, lista_peliculas=lista_peliculas)
-
+    lista_cines = Cine.ListarCines()
+    C = Cine.InfoCine()
+    lista_horarios = Cine.GetHorariosCine()
+    return render_template('pelis.html', nombre=nombre, apellido=apellido, lista_peliculas=lista_peliculas, lista_cines=lista_cines)
+"""
 @app.route('/cines',methods = ['GET'])
 def Cines():
     nombrePeli = request.args.get('nombrePeli')
     P = Pelicula.InfoPeli(nombrePeli)
     lista_cines = Cine.ListarCines()
     return render_template('cines.html', lista_cines=lista_cines,P=P)
-
+"""
 @app.route('/horarios',methods = ['GET'])
 def Fecha_Hora():
     nombreCine = request.args.get('nombreCine')
@@ -51,6 +55,21 @@ def fecha_Hora():
     S = Horario.GetSala_En_Horario(fecha_hora)
     lista_butacas = Sala.Listar_Butacas(S.idSala)
     return render_template('butacas.html',lista_butacas=lista_butacas,H=H,S=S)
+
+@app.route('/reservas',methods = ['GET'])
+def reservas():
+    dni = request.args.get['dni']
+    idPeli = request.args.get['idPelicula']
+    idSala = request.args.get['idSala']
+    idHorario = request.args.get['idHorario']
+    R = Reserva()
+    R.idReserva = 'NULL'
+    R.Cliente_dni = dni
+    R.Horarios_idHorario = idHorario
+    R.Horarios_Sala_idSala = idSala
+    R.Pelicula_idPelicula = idPeli
+    R.Dar_de_Alta_Reserva()
+
 
 if __name__ == '__main__':
    app.run(debug = True)

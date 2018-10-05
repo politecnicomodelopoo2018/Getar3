@@ -10,7 +10,7 @@
 				<p>Elija la sucursal en la que desea ver la pelicula: </p>
 				{% for item in lista_cines: %}
 				<br>
-				<a href="/horarios?nombreCine={{item.nombre}}"> {{item.nombre}}</a>
+				<a href="/horarios?nombreCine={{item.nombre}}&nombrePeli={{P.nombre}}"> {{item.nombre}}</a>
 				{% endfor %}
 	</body>
 </html>

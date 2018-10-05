@@ -81,4 +81,24 @@ B.id_sala = 2
 B.precio_butaca = 150
 B.Dar_de_Alta_Butaca()
 """
+P = Pelicula()
+P.idPelicula = 'NULL'
+P.nombre = 'Invictus'
+P.genero = 'Drama'
+P.estrellas = 5
+P.Dar_de_Alta_Pelicula()
+
+P = Pelicula()
+P.idPelicula = 'NULL'
+P.nombre = 'Viernes 13'
+P.genero = 'Terror'
+P.estrellas = 4
+P.Dar_de_Alta_Pelicula()
+
+P = Pelicula()
+P.idPelicula = 'NULL'
+P.nombre = 'Coco'
+P.genero = 'Animada'
+P.estrellas = 3
+P.Dar_de_Alta_Pelicula()
 

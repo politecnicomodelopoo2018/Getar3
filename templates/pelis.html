@@ -5,9 +5,24 @@
 	<body>
 				<p>Bienvenido {{nombre}} {{apellido}}</p>
 			    <p>¿Qué película desea ver?: </p>
-				{% for item in lista_peliculas: %}
-				<br>
-				<a href="/cines?nombrePeli={{item.nombre}}"> {{item.nombre}}</a>
-				{% endfor %}
+				 <select>
+  						{%for item in lista_peliculas%}
+  						<option value=Pelicula >{{item.nombre}}</option>
+					 	{%endfor%}
+				</select>
+
+				<p>¿En qué cine quiere ver la pelicula</p>
+				<select>
+  						{%for item in lista_cines%}
+  						<option value=Cine >{{item.nombre}}</option>
+					 	{%endfor%}
+				</select>
+
+				<p>¿En qué horario quiere ver la pelicula</p>
+				<select>
+  						{%for item in lista_horarios%}
+  						<option value=Cine >{{item.nombre}}</option>
+					 	{%endfor%}
+				</select>
 	</body>
 </html>
