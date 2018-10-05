@@ -9,6 +9,12 @@ class Pelicula(object):
     def Dar_de_Alta_Pelicula(self):
         DB.run("Insert into Pelicula(idPelicula, nombre, genero, estrellas) VALUES(NULL,'" + self.nombre + "','"+ self.genero +"','" + str(self.estrellas) + "');")
 
+    def Dar_de_Baja_Pelicula(self):
+        DB.run("Delete from Pelicula where idPelicula = ("+ str(self.idPelicula) +");")
+
+    def Modificar_Pelicula(self):
+        DB.run("UPDATE Pelicula SET nombre = '%s', genero = '%s', estrellas = '%i' WHERE idPelicula = %i;" % (
+        self.nombre, self.genero, self.estrellas, self.dni))
 
     @staticmethod
     def ListarPeliculas():

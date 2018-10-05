@@ -23,7 +23,6 @@ def login():
     else:
         return render_template('login.html')
 
-
 @app.route('/Pelis/<nombre>/<apellido>/')
 def Pelis(nombre,apellido):
     lista_peliculas = Pelicula.ListarPeliculas()
