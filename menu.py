@@ -2,6 +2,8 @@ from flask import Flask, redirect, request, render_template
 from cliente import Cliente
 from pelicula import Pelicula
 from cine import Cine
+from horario import Horario
+from sala import Sala
 
 app = Flask(__name__)
 
@@ -41,6 +43,14 @@ def Fecha_Hora():
     C = Cine.InfoCine(nombreCine)
     lista_horarios = Cine.GetHorariosCine(nombreCine)
     return render_template('horarios.html',lista_horarios=lista_horarios,C=C)
+
+@app.route('/butaca',methods = ['GET'])
+def fecha_Hora():
+    fecha_hora = request.args.get('fecha_hora')
+    H = Horario.GetInfoHorarios(fecha_hora)
+    S = Horario.GetSala_En_Horario(fecha_hora)
+    lista_butacas = Sala.Listar_Butacas(S.idSala)
+    return render_template('butacas.html',lista_butacas=lista_butacas,H=H,S=S)
 
 if __name__ == '__main__':
    app.run(debug = True)

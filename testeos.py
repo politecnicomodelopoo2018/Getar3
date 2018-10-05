@@ -2,6 +2,7 @@ from pelicula import Pelicula
 from cine import Cine
 from sala import Sala
 from horario import Horario
+from butaca import Butaca
 """
 P = Pelicula()
 P.idPelicula = 'NULL'
@@ -43,5 +44,41 @@ H.Sala_idSala = 2
 H.Pelicula_idPelicula = 1
 H.Cine_idCine = 2
 H.Dar_de_Alta_Horario()
+
+B = Butaca()
+B.idButaca = 'NULL'
+B.id_sala = 1
+B.precio_butaca = 150
+B.Dar_de_Alta_Butaca()
+
+B = Butaca()
+B.idButaca = 'NULL'
+B.id_sala = 1
+B.precio_butaca = 150
+B.Dar_de_Alta_Butaca()
+
+B = Butaca()
+B.idButaca = 'NULL'
+B.id_sala = 1
+B.precio_butaca = 150
+B.Dar_de_Alta_Butaca()
+
+B = Butaca()
+B.idButaca = 'NULL'
+B.id_sala = 2
+B.precio_butaca = 150
+B.Dar_de_Alta_Butaca()
+
+B = Butaca()
+B.idButaca = 'NULL'
+B.id_sala = 2
+B.precio_butaca = 150
+B.Dar_de_Alta_Butaca()
+
+B = Butaca()
+B.idButaca = 'NULL'
+B.id_sala = 2
+B.precio_butaca = 150
+B.Dar_de_Alta_Butaca()
 """
 
