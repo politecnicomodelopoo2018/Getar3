@@ -6,7 +6,7 @@
 				<p>Elija en que horario quiere ver la pelicula: </p>
 				{% for item in lista_horarios: %}
 				<br>
-				<a href="/butaca"> {{item.fecha_hora}}</a>
+				<a href="/butaca?fecha_hora={{item.fecha_hora}}"> {{item.fecha_hora}}</a>
 				{% endfor %}
 	</body>
 </html>
