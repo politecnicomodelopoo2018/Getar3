@@ -30,8 +30,10 @@ def login():
 def Pelis(nombre,apellido):
     lista_peliculas = Pelicula.ListarPeliculas()
     lista_cines = Cine.ListarCines()
+    """
     C = Cine.InfoCine()
     lista_horarios = Cine.GetHorariosCine()
+    """
     return render_template('pelis.html', nombre=nombre, apellido=apellido, lista_peliculas=lista_peliculas, lista_cines=lista_cines)
 """
 @app.route('/cines',methods = ['GET'])

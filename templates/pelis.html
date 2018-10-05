@@ -5,7 +5,8 @@
 	<body>
 				<p>Bienvenido {{nombre}} {{apellido}}</p>
 			    <p>¿Qué película desea ver?: </p>
-				 <select>
+	<form action = "/horarios" method="post" >
+				<select>
   						{%for item in lista_peliculas%}
   						<option value=Pelicula >{{item.nombre}}</option>
 					 	{%endfor%}
@@ -18,11 +19,7 @@
 					 	{%endfor%}
 				</select>
 
-				<p>¿En qué horario quiere ver la pelicula</p>
-				<select>
-  						{%for item in lista_horarios%}
-  						<option value=Cine >{{item.nombre}}</option>
-					 	{%endfor%}
-				</select>
+				<p><input type = "submit" value = "submit" ></p>
+	</form>
 	</body>
 </html>

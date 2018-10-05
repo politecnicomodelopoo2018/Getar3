@@ -3,7 +3,7 @@ from cine import Cine
 from sala import Sala
 from horario import Horario
 from butaca import Butaca
-"""
+
 P = Pelicula()
 P.idPelicula = 'NULL'
 P.nombre = 'Avengers Infinity War'
@@ -80,7 +80,7 @@ B.idButaca = 'NULL'
 B.id_sala = 2
 B.precio_butaca = 150
 B.Dar_de_Alta_Butaca()
-"""
+
 P = Pelicula()
 P.idPelicula = 'NULL'
 P.nombre = 'Invictus'
