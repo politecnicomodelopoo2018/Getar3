@@ -28,6 +28,25 @@ H.Pelicula_idPelicula = 1
 H.Cine_idCine = 1
 H.Dar_de_Alta_Horario()
 
+
+H = Horario()
+H.idHorario = 'NULL'
+H.fecha_hora = "Miercoles 11 de Octubre 12:00"
+H.Sala_idSala = 1
+H.Pelicula_idPelicula = 1
+H.Cine_idCine = 1
+H.Dar_de_Alta_Horario()
+
+
+H = Horario()
+H.idHorario = 'NULL'
+H.fecha_hora = "Martes 10 de Octubre 20:00"
+H.Sala_idSala = 1
+H.Pelicula_idPelicula = 1
+H.Cine_idCine = 1
+H.Dar_de_Alta_Horario()
+
+
 C = Cine()
 C.idCine = 'NULL'
 C.nombre = 'GetarCine Moreno'
@@ -101,4 +120,20 @@ P.nombre = 'Coco'
 P.genero = 'Animada'
 P.estrellas = 3
 P.Dar_de_Alta_Pelicula()
+
+"""
+    C = Cine.InfoCine()
+    lista_horarios = Cine.GetHorariosCine()
+"""
+"""
+@app.route('/cines',methods = ['GET'])
+def Cines():
+    nombrePeli = request.args.get('nombrePeli')
+    P = Pelicula.InfoPeli(nombrePeli)
+    lista_cines = Cine.ListarCines()
+    return render_template('cines.html', lista_cines=lista_cines,P=P)
+"""
+
+
+
 

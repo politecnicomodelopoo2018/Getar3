@@ -4,9 +4,14 @@
 	</head>
 	<body>
 				<p>Elija en que horario quiere ver la pelicula: </p>
-				{% for item in lista_horarios: %}
-				<br>
-				<a href="/butaca?fecha_hora={{item.fecha_hora}}&nombrePeli={{item.nombre}}&nombrePeli={{item.nombre}}"> {{item.fecha_hora}}</a>
-				{% endfor %}
+				<form action = "/butacas" method="post" >
+				<select name="horarios">
+  						{%for item in lista_horarios%}
+  						<option value= "{{item.fecha_hora}}">{{item.fecha_hora}}</option>
+					 	{%endfor%}
+				</select>
+
+				<p><a href = "/butacas"> <input type = "submit" value = "Confirmar" ></a></p>
+				</form>
 	</body>
 </html>

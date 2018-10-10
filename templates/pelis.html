@@ -4,18 +4,18 @@
 	</head>
 	<body>
 				<p>Bienvenido {{nombre}} {{apellido}}</p>
-			    <p>¿Qué película desea ver?: </p>
+			    <p>¿Qué película quiere ver?: </p>
 	<form action = "/horarios" method="post" >
 				<select name="pelicula">
   						{%for item in lista_peliculas%}
-  						<option value=Pelicula >{{item.nombre}}</option>
+  						<option value= "{{item.idPelicula}}" >{{item.nombre}}</option>
 					 	{%endfor%}
 				</select>
 
 				<p>¿En qué cine quiere ver la pelicula</p>
 				<select name="cine">
   						{%for item in lista_cines%}
-  						<option value=Cine >{{item.nombre}}</option>
+  						<option value= "{{item.idCine}}" >{{item.nombre}}</option>
 					 	{%endfor%}
 				</select>
 
