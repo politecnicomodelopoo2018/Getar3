@@ -45,7 +45,7 @@ def Cines():
 """
 @app.route('/horarios',methods = ['GET'])
 def Fecha_Hora():
-    nombreCine = request.args.get('nombreCine')
+    nombreCine = x
     C = Cine.InfoCine(nombreCine)
     lista_horarios = Cine.GetHorariosCine(nombreCine)
     return render_template('horarios.html',lista_horarios=lista_horarios,C=C)

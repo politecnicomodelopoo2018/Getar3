@@ -6,20 +6,20 @@
 				<p>Bienvenido {{nombre}} {{apellido}}</p>
 			    <p>¿Qué película desea ver?: </p>
 	<form action = "/horarios" method="post" >
-				<select>
+				<select name="pelicula">
   						{%for item in lista_peliculas%}
   						<option value=Pelicula >{{item.nombre}}</option>
 					 	{%endfor%}
 				</select>
 
 				<p>¿En qué cine quiere ver la pelicula</p>
-				<select>
+				<select name="cine">
   						{%for item in lista_cines%}
   						<option value=Cine >{{item.nombre}}</option>
 					 	{%endfor%}
 				</select>
 
-				<p><input type = "submit" value = "submit" ></p>
+				<p><a href = "/horarios"> <input type = "submit" value = "Confirmar" ></a></p>
 	</form>
 	</body>
 </html>
