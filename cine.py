@@ -20,8 +20,8 @@ class Cine(object):
         return listaCines
 
     @staticmethod
-    def InfoCine(nombreCine):
-        cursorInfoCine = DB.run("Select * from Cine where nombre = '" + nombreCine + "';")
+    def InfoCine(idCine):
+        cursorInfoCine = DB.run("Select * from Cine where idCine = '" + idCine + "';")
         C = Cine()
         for item in cursorInfoCine:
             C.idCine = item["idCine"]
@@ -30,7 +30,7 @@ class Cine(object):
 
     @staticmethod
     def GetHorariosCine(idCine):
-        cursorHorariosCine = DB.run("Select * from Horarios join Cine on Horarios.Cine_idCine = Cine.idCine where Cine.nombre = '"+ nombreCine +"';")
+        cursorHorariosCine = DB.run("Select * from Horarios join Cine on Horarios.Cine_idCine = Cine.idCine where Cine.idCine = '"+ idCine +"';")
         listaHorarios = []
         for item in cursorHorariosCine:
             H = Horario()

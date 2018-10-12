@@ -30,8 +30,8 @@ class Pelicula(object):
         return listaPeliculas
 
     @staticmethod
-    def InfoPeli(nombrePeli):
-        cursorInfoPeli = DB.run("Select * from Pelicula where nombre = ('"+nombrePeli+"');")
+    def InfoPeli(idPeli):
+        cursorInfoPeli = DB.run("Select * from Pelicula where idPelicula = ('"+idPeli+"');")
         P = Pelicula()
         for item in cursorInfoPeli:
             P.idPelicula = item["idPelicula"]
