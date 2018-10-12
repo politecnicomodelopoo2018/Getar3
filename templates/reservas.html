@@ -4,12 +4,13 @@
 	</head>
 	<body>
 				<p>Su Reserva:</p>
-                <p>Pelicula: {{P.nombre}}</p>
-				<p>Sala	 {{S.idSala}}</p>
-				<p>Horario {{H.fecha_hora}}</p>
-                <p>Precio: {{B.precio_butaca}}</p>
+                <p>Pelicula: {{0}}</p>
+				<p>Sala: {{B.idSala}}</p>
+				<p>Butaca {{B.idButaca}}</p>
+				<p>Horario {{0}}</p>
+                <p>Precio: ${{B.precio_butaca}}</p>
 				<br>
-				<a href="/reserva_realizada"> Confirmar Reserva</a>
+				<p><a href = "/menu"> <input type = "submit" value = "Confirmar Reserva" ></a></p>
 
 	</body>
 </html>

@@ -4,14 +4,17 @@
 	</head>
 	<body>
 				<p>Sala {{S.idSala}}</p>
+				<p>Horario: {{H.fecha_hora}}</p>
                 <p>Elija su Butaca: </p>
-				<form action = "/reserva" method="post" >
+				<form action = "/reservas" method="post" >
 				<select name="butacas">
   						{%for item in lista_butacas%}
   						<option value="{{item.idButaca}}">{{item.idButaca}}</option>
 					 	{%endfor%}
 				</select>
+				<div style="display:hidden">
 
+				</div>
 				<p><a href = "/reservas"> <input type = "submit" value = "Confirmar" ></a></p>
 				</form>
 	</body>
