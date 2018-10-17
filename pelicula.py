@@ -9,12 +9,14 @@ class Pelicula(object):
     def Dar_de_Alta_Pelicula(self):
         DB.run("Insert into Pelicula(idPelicula, nombre, genero, estrellas) VALUES(NULL,'" + self.nombre + "','"+ self.genero +"','" + str(self.estrellas) + "');")
 
-    def Dar_de_Baja_Pelicula(self):
-        DB.run("Delete from Pelicula where idPelicula = ("+ str(self.idPelicula) +");")
+    @staticmethod
+    def Dar_de_Baja_Pelicula(idPelicula):
+        DB.run("Delete from Pelicula where idPelicula = ("+ str(idPelicula) +");")
 
-    def Modificar_Pelicula(self):
+    @staticmethod
+    def Modificar_Pelicula(idPelicula,nombre,genero,estrellas):
         DB.run("UPDATE Pelicula SET nombre = '%s', genero = '%s', estrellas = '%i' WHERE idPelicula = %i;" % (
-        self.nombre, self.genero, self.estrellas, self.dni))
+        nombre, genero, estrellas, idPelicula))
 
     @staticmethod
     def ListarPeliculas():
@@ -31,11 +33,11 @@ class Pelicula(object):
 
     @staticmethod
     def InfoPeli(idPeli):
-        cursorInfoPeli = DB.run("Select * from Pelicula where idPelicula = ('"+idPeli+"');")
+        cursorInfoPeli = DB.run("Select * from Pelicula where idPelicula = ("+str(idPeli)+");")
         P = Pelicula()
-        for item in cursorInfoPeli:
-            P.idPelicula = item["idPelicula"]
-            P.nombre = item["nombre"]
-            P.genero = item["genero"]
-            P.estrellas = item["estrellas"]
+        dict = cursorInfoPeli.fetchone()
+        P.idPelicula = dict["idPelicula"]
+        P.nombre = dict["nombre"]
+        P.genero = dict["genero"]
+        P.estrellas = dict["estrellas"]
         return P

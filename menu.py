@@ -18,6 +18,24 @@ def Menu():
 def registroAdmin():
     return render_template('registroAdmin.html')
 
+@app.route('/AdminPelis')
+def AdminPelis():
+    lista_peliculas = Pelicula.ListarPeliculas()
+    return render_template('AdminPelis.html',lista_peliculas=lista_peliculas)
+
+@app.route('/DarDeBajaPelis',methods = ['GET'])
+def DarDeBajaPelis():
+    idpeli = request.form.get("pelicula")
+    Pelicula.Dar_de_Baja_Pelicula(idpeli)
+    return render_template('AdminPelis.html')
+
+@app.route('/ModificarPelis',methods = ['GET'])
+def ModificarPelis():
+    idpeli = request.form.get("pelicula")
+    P = Pelicula.InfoPeli(idpeli)
+    Pelicula.Modificar_Pelicula()
+    return render_template('AdminPelis.html')
+
 @app.route('/login')
 def login():
     return render_template('login.html')
@@ -26,7 +44,7 @@ def login():
 def loginAction():
     # validar Contraseña cualdo la haya
     session["dni"] = request.form.get("dni")
-    return redirect('/Pelis')
+    return render_template('menu.html')
 
 @app.route('/signup')
 def signup():
@@ -39,6 +57,8 @@ def signupAction():
     p.apellido = request.form['apellido']
     p.Dar_de_Alta_Persona()
     return redirect('/')
+
+
 
 @app.route('/Pelis')
 def Pelis():
@@ -59,23 +79,29 @@ def Fecha_Hora():
 @app.route('/butacas',methods = ['POST','GET'])
 def butacas():
     idHorario = request.form['horarios']
+    idpeli = request.args.get('idpeli')
+    idcine = request.args.get('idcine')
     H = Horario.GetInfoHorarios(idHorario)
     S = Horario.GetSala_En_Horario(idHorario)
     lista_butacas = Sala.Listar_Butacas(S.idSala)
-    return render_template('butacas.html',lista_butacas=lista_butacas, S=S, H=H)
+    return render_template('butacas.html',lista_butacas=lista_butacas, S=S, H=H, idpeli=idpeli, idcine=idcine)
 
 @app.route('/reservas',methods = ['POST','GET'])
 def reservas():
     idButaca = request.form['butacas']
+    idpeli = request.args.get('idpeli')
+    idhorario= request.args.get('idhorario')
+    P = Pelicula.InfoPeli(idpeli)
+    H = Horario.GetInfoHorarios(idhorario)
     B = Butaca.get_butaca(idButaca)
     R = Reserva()
     R.idReserva = 'NULL'
     R.Cliente_dni = session['dni']
-    R.Horarios_idHorario =0
+    R.Horarios_idHorario = idhorario
     R.Horarios_Sala_idSala = B.id_sala
-    R.Pelicula_idPelicula =0
-    #R.Dar_de_Alta_Reserva()
-    return render_template('reservas.html',B=B)
+    R.Pelicula_idPelicula = idpeli
+    R.Dar_de_Alta_Reserva()
+    return render_template('reservas.html', B=B, H=H, P=P)
 
 if __name__ == '__main__':
    app.run(debug = True)

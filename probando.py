@@ -1,6 +1,6 @@
-from sala import Sala
-from horario import Horario
+from pelicula import Pelicula
 
-a = Horario.GetSala_En_Horario('Martes 10 de Octubre 20:00')
-b = a.idSala
-lista = Sala.Listar_Butacas(a.idSala)
+id = 1
+p = Pelicula.InfoPeli(id)
+lista = []
+lista.append(p.nombre)
