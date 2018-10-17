@@ -12,10 +12,7 @@
   						<option value="{{item.idButaca}}">{{item.idButaca}}</option>
 					 	{%endfor%}
 				</select>
-				<div style="display:hidden">
-
-				</div>
-				<p><a href = "/reservas"> <input type = "submit" value = "Confirmar" ></a></p>
+				<p><a href = "/reservas?idpeli=idpeli&idcine=cine.idcine&idhorario={{H.idHorario}}"> <input type = "submit" value = "Confirmar" ></a></p>
 				</form>
 	</body>
 </html>
