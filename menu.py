@@ -90,7 +90,7 @@ def butacas():
 def reservas():
     idButaca = request.form['butacas']
     idpeli = request.form['idpeli']
-    idhorario= request.form['idcine']
+    idhorario= request.form['idhorario']
     P = Pelicula.InfoPeli(idpeli)
     H = Horario.GetInfoHorarios(idhorario)
     B = Butaca.get_butaca(idButaca)
@@ -102,6 +102,14 @@ def reservas():
     R.Pelicula_idPelicula = idpeli
     R.Dar_de_Alta_Reserva()
     return render_template('reservas.html', B=B, H=H, P=P, R=R)
+
+@app.route('/ver_reservas')
+def ver_reservas():
+    dni = session['dni']
+    Pe = Persona.ObtenerDatosPersona(dni)
+    Peli = Reserva.PeliculaEnReserva(dni)
+    lista_reservas = Reserva.ListarReservas(dni)
+    return render_template('ver_reservas.html', Pe=Pe, lista_reservas=lista_reservas, Peli=Peli)
 
 if __name__ == '__main__':
    app.run(debug = True)
