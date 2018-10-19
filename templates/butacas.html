@@ -7,12 +7,15 @@
 				<p>Horario: {{H.fecha_hora}}</p>
                 <p>Elija su Butaca: </p>
 				<form action = "/reservas" method="post" >
+					<input type="hidden" name="idpeli" value="{{idpeli}}">
+					<input type="hidden" name="idcine" value="{{idcine}}">
+					<input type="hidden" name="idhorario" value="{{H.idHorario}}">
 				<select name="butacas">
   						{%for item in lista_butacas%}
   						<option value="{{item.idButaca}}">{{item.idButaca}}</option>
 					 	{%endfor%}
 				</select>
-				<p><a href = "/reservas?idpeli=idpeli&idcine=cine.idcine&idhorario={{H.idHorario}}"> <input type = "submit" value = "Confirmar" ></a></p>
+				<a href = "/reservas"> <input type = "submit" value = "Confirmar" ></a>
 				</form>
 	</body>
 </html>

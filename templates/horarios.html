@@ -9,13 +9,15 @@
 				<p>Cine: {{cine.nombre}}</p>
 				<p>Elija en que horario quiere ver la pelicula: </p>
 				<form action = "/butacas" method="post" >
+					<input type="hidden" name="idpeli" value="{{peli.idPelicula}}">
+					<input type="hidden" name="idcine" value="{{cine.idCine}}">
 				<select name="horarios">
   						{%for item in lista_horarios%}
   						<option value= "{{item.idHorario}}">{{item.fecha_hora}}</option>
 					 	{%endfor%}
 				</select>
 
-				<p><a href = "/butacas?idpeli={{peli.idPelicula}}&idcine={{cine.idCine}}"> <input type = "submit" value = "Confirmar" ></a></p>
+				<p href = "/butacas"> <input type = "submit" value = "Confirmar" ></p>
 				</form>
 	</body>
 </html>
