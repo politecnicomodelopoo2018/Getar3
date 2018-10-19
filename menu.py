@@ -69,7 +69,7 @@ def Pelis():
 
 @app.route('/horarios',methods = ['POST','GET'])
 def Fecha_Hora():
-    idpeli = request.form.get("pelicula")
+    idpeli = request.form["pelicula"]
     idcine = request.form['cine']
     datos_peli = Pelicula.InfoPeli(idpeli)
     datos_cine = Cine.InfoCine(idcine)
@@ -79,8 +79,8 @@ def Fecha_Hora():
 @app.route('/butacas',methods = ['POST','GET'])
 def butacas():
     idHorario = request.form['horarios']
-    idpeli = request.args.get('idpeli')
-    idcine = request.args.get('idcine')
+    idpeli = request.form.get('idpeli')
+    idcine = request.form.get('idcine')
     H = Horario.GetInfoHorarios(idHorario)
     S = Horario.GetSala_En_Horario(idHorario)
     lista_butacas = Sala.Listar_Butacas(S.idSala)
@@ -89,8 +89,8 @@ def butacas():
 @app.route('/reservas',methods = ['POST','GET'])
 def reservas():
     idButaca = request.form['butacas']
-    idpeli = request.args.get('idpeli')
-    idhorario= request.args.get('idhorario')
+    idpeli = request.form['idpeli']
+    idhorario= request.form['idcine']
     P = Pelicula.InfoPeli(idpeli)
     H = Horario.GetInfoHorarios(idhorario)
     B = Butaca.get_butaca(idButaca)
@@ -98,10 +98,10 @@ def reservas():
     R.idReserva = 'NULL'
     R.Cliente_dni = session['dni']
     R.Horarios_idHorario = idhorario
-    R.Horarios_Sala_idSala = B.id_sala
+    R.Horarios_Sala_idSala = H.Sala_idSala
     R.Pelicula_idPelicula = idpeli
     R.Dar_de_Alta_Reserva()
-    return render_template('reservas.html', B=B, H=H, P=P)
+    return render_template('reservas.html', B=B, H=H, P=P, R=R)
 
 if __name__ == '__main__':
    app.run(debug = True)

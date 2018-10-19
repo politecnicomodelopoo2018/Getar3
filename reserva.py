@@ -8,5 +8,5 @@ class Reserva(object):
     Pelicula_idPelicula = None
 
     def Dar_de_Alta_Reserva(self):
-        DB.run("Insert into Reserva(idReserva,Cliente_dni,Horarios_idHorario,Horarios_Sala_idSala,Pelicula_idPelicula) VALUES("+ str(self.idReserva) +","+ str(self.Cliente_dni) +","+str(self.Horarios_idHorario)+","+ str(self.Horarios_Sala_idSala) +","+ str(self.Horarios_Sala_Cine_idCine) +");")
+        DB.run("Insert into Reserva(idReserva, Cliente_dni, Horarios_idHorarios, Horarios_Sala_idSala ,Pelicula_idPelicula) VALUES("+ str(self.idReserva) +","+ str(self.Cliente_dni) +","+str(self.Horarios_idHorario)+","+ str(self.Horarios_Sala_idSala) +","+ str(self.Pelicula_idPelicula) +");")
 
