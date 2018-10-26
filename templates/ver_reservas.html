@@ -10,8 +10,9 @@
         <p>ID: {{item.idReserva}}</p>
         <p>Pelicula: {{item.PeliculaEnReserva().nombre}}</p>
         <p>Sala: {{item.Horarios_Sala_idSala}}</p>
-        <p>Butaca: {{0}}</p>
+        <p>Butaca: {{item.ButacaEnReserva().idButaca}}</p>
         <p>Horario: {{item.HorarioEnReserva().fecha_hora}}</p>
         {%endfor%}
+        <p><a href = "/"> <input type = "submit" value = "Volver al Menu" ></a></p>
 </body>
 </html>
