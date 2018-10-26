@@ -8,11 +8,10 @@
         <p>Reservas del cliente {{Pe.nombre}} {{Pe.apellido}}</p>
         {%for item in lista_reservas%}
         <p>ID: {{item.idReserva}}</p>
-        <p>Pelicula: {{Peli.nombre}}</p>
+        <p>Pelicula: {{item.PeliculaEnReserva().nombre}}</p>
         <p>Sala: {{item.Horarios_Sala_idSala}}</p>
-        <p>Butaca: {{B.idButaca}}</p>
-        <p>Horario: {{Horarios_idHorario}}</p>
-        <p>Precio: ${{B.precio_butaca}}</p>
+        <p>Butaca: {{0}}</p>
+        <p>Horario: {{item.HorarioEnReserva().fecha_hora}}</p>
         {%endfor%}
 </body>
 </html>
