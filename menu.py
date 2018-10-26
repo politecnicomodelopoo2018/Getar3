@@ -107,9 +107,8 @@ def reservas():
 def ver_reservas():
     dni = session['dni']
     Pe = Persona.ObtenerDatosPersona(dni)
-    Peli = Reserva.PeliculaEnReserva(dni)
     lista_reservas = Reserva.ListarReservas(dni)
-    return render_template('ver_reservas.html', Pe=Pe, lista_reservas=lista_reservas, Peli=Peli)
+    return render_template('ver_reservas.html', Pe=Pe, lista_reservas=lista_reservas)
 
 if __name__ == '__main__':
    app.run(debug = True)

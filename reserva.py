@@ -1,5 +1,6 @@
 from db import DB
 from pelicula import Pelicula
+from horario import Horario
 
 class Reserva(object):
     idReserva = None
@@ -25,9 +26,9 @@ class Reserva(object):
             ListaReservas.append(R)
         return ListaReservas
 
-    @staticmethod
-    def PeliculaEnReserva(dni):
-        cursorPeliEnReserva = DB.run("Select * from Pelicula where Reserva.Cliente_dni = "+str(dni)+";")
+
+    def PeliculaEnReserva(self):
+        cursorPeliEnReserva = DB.run("Select * from Pelicula join Reserva on Pelicula.idPelicula = Reserva.Pelicula_idPelicula where Reserva.idReserva = "+str(self.idReserva)+";")
         Peli = Pelicula()
         for item in cursorPeliEnReserva:
             Peli.idPelicula = item['idPelicula']
@@ -35,3 +36,16 @@ class Reserva(object):
             Peli.estrellas = item['estrellas']
             Peli.genero = item['genero']
         return Peli
+
+
+    def HorarioEnReserva(self):
+        cursorHorarioEnReserva = DB.run("Select * from Horarios join Reserva on Horarios.idHorarios = Reserva.Horarios_idHorarios where Reserva.idReserva = " + str(self.idReserva) + ";")
+        H = Horario()
+        for item in cursorHorarioEnReserva:
+            H.idHorario = item['idHorarios']
+            H.fecha_hora = item['fecha_hora']
+            H.Sala_idSala = item['Sala_idSala']
+            H.Pelicula_idPelicula = item['Pelicula_idPelicula']
+            H.Cine_idCine = item['Cine_idCine']
+        return H
+
