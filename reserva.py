@@ -1,6 +1,7 @@
 from db import DB
 from pelicula import Pelicula
 from horario import Horario
+from butaca import Butaca
 
 class Reserva(object):
     idReserva = None
@@ -48,4 +49,13 @@ class Reserva(object):
             H.Pelicula_idPelicula = item['Pelicula_idPelicula']
             H.Cine_idCine = item['Cine_idCine']
         return H
+
+    def ButacaEnReserva(self):
+        cursorButacaEnReserva = DB.run("Select * from Butaca join Reserva on Reserva.Horarios_Sala_idSala = Butaca.Sala_idSala where Reserva.idReserva = " + str(self.idReserva) + ";")
+        B = Butaca()
+        for item in cursorButacaEnReserva:
+            B.idButaca = item['idButaca']
+            B.id_sala = item['Sala_idSala']
+            B.precio_butaca = item['precio_butaca']
+        return B
 

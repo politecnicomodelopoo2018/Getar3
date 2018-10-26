@@ -58,7 +58,10 @@ def signupAction():
     p.Dar_de_Alta_Persona()
     return redirect('/')
 
-
+@app.route('/Cerrar_Sesion')
+def Cerrar_Serion():
+    session.pop('dni',None)
+    return redirect('/')
 
 @app.route('/Pelis')
 def Pelis():
