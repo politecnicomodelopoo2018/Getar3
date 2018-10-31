@@ -10,31 +10,14 @@ from reserva import Reserva
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
+
+def Session():
+    if not 'dni' in session:
+        session['dni'] = session.get('dni')
+
 @app.route('/')
 def Menu():
    return render_template('menu.html')
-
-@app.route('/registroAdmin')
-def registroAdmin():
-    return render_template('registroAdmin.html')
-
-@app.route('/AdminPelis')
-def AdminPelis():
-    lista_peliculas = Pelicula.ListarPeliculas()
-    return render_template('AdminPelis.html',lista_peliculas=lista_peliculas)
-
-@app.route('/DarDeBajaPelis',methods = ['GET'])
-def DarDeBajaPelis():
-    idpeli = request.form.get("pelicula")
-    Pelicula.Dar_de_Baja_Pelicula(idpeli)
-    return render_template('AdminPelis.html')
-
-@app.route('/ModificarPelis',methods = ['GET'])
-def ModificarPelis():
-    idpeli = request.form.get("pelicula")
-    P = Pelicula.InfoPeli(idpeli)
-    Pelicula.Modificar_Pelicula()
-    return render_template('AdminPelis.html')
 
 @app.route('/login')
 def login():
@@ -42,9 +25,14 @@ def login():
 
 @app.route('/loginAction',methods = ['POST', 'GET'])
 def loginAction():
-    # validar Contraseña cualdo la haya
-    session["dni"] = request.form.get("dni")
-    return render_template('menu.html')
+    contraseña = request.form.get("contraseña")
+    i = request.form.get("dni")
+    p = Persona.ObtenerDatosPersona(i)
+    if contraseña != p.contraseña:
+        return redirect('/login')
+    else:
+        session["dni"] = request.form.get("dni")
+        return redirect('/')
 
 @app.route('/signup')
 def signup():
@@ -53,8 +41,9 @@ def signup():
 @app.route('/signupAction',methods = ['POST', 'GET'])
 def signupAction():
     p = Persona()
-    p.nombre = request.form['nombre']
-    p.apellido = request.form['apellido']
+    p.nombre = request.form.get('nombre')
+    p.apellido = request.form.get('apellido')
+    p.contraseña = request.form.get('contraseña')
     p.Dar_de_Alta_Persona()
     return redirect('/')
 
@@ -65,7 +54,8 @@ def Cerrar_Serion():
 
 @app.route('/Pelis')
 def Pelis():
-    p = Persona.ObtenerDatosPersona(session["dni"])
+    dni = session["dni"]
+    p = Persona.ObtenerDatosPersona(dni)
     lista_peliculas = Pelicula.ListarPeliculas()
     lista_cines = Cine.ListarCines()
     return render_template('pelis.html', p=p, lista_peliculas=lista_peliculas, lista_cines=lista_cines)
@@ -114,11 +104,10 @@ def ver_reservas():
     return render_template('ver_reservas.html', Pe=Pe, lista_reservas=lista_reservas)
 
 if __name__ == '__main__':
-   app.run(debug = True)
+    app.run(debug = True)
 
 
 
 # 1. RESERVA DE ENTRADA - GUARDAR EN db LA RESERVA (MOSTRAR SOLO LAS BUTACAS LIBRES)
-# 2. VER RESERVAS ACTUALES DE USUARIO
 # 3. ADMINISTRACION PARA AGREGAR MODIFICAR ELIMINAR PELICULAS
 

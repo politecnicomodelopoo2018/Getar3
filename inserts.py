@@ -133,7 +133,3 @@ def Cines():
     lista_cines = Cine.ListarCines()
     return render_template('cines.html', lista_cines=lista_cines,P=P)
 """
-
-
-
-
