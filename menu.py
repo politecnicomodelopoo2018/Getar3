@@ -122,7 +122,7 @@ def Pelis():
         lista_cines = Cine.ListarCines()
         return render_template('pelis.html', p=p, lista_peliculas=lista_peliculas, lista_cines=lista_cines)
     else:
-
+        return redirect('/')
 
 @app.route('/horarios',methods = ['POST','GET'])
 def Fecha_Hora():
