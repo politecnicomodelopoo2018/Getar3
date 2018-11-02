@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+	<p>Elija una Pelicula para darla de baja</p>
+	<form action = "/DarDeBajaPeliAction" method="post" >
+				<select name="pelicula">
+  						{%for item in lista_pelis%}
+  						<option value= "{{item.idPelicula}}" >{{item.nombre}}</option>
+					 	{%endfor%}
+				</select>
+				<p><a href = "/DarDeBajaPeli"> <input type = "submit" value = "Confirmar" ></a></p>
+	</form>
+</body>
+</html>

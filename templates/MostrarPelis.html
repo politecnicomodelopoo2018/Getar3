@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pelis en Cartelera</title>
+</head>
+<body>
+        <p>Peliculas en Cartelera</p>
+        {%for item in lista_pelis%}
+        <p>ID: {{item.idPelicula}}</p>
+        <p>Pelicula: {{item.nombre}}</p>
+        <p>Genero: {{item.genero}}</p>
+        <p>Estrellas: {{item.estrellas}}</p>
+        {%endfor%}
+        <p><a href = "/MenuAdmin"> <input type = "submit" value = "Volver al Menu de Administrador" ></a></p>
+</body>
+</html>

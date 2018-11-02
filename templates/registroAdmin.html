@@ -5,9 +5,12 @@
     <title>Inicio de sesion como administrador</title>
 </head>
 <body>
-         <p>Ingrese su nombre y apellido:</p>
+    <form action="/registroAdminAction" method="POST">
+         <p>Ingrese su nombre:</p>
          <p><input type = "text" name = "nombre" placeholder="nombre"></p>
+         <p>Ingrese su apellido:</p>
          <p><input type = "text" name = "apellido" placeholder="apellido"></p>
          <p><a href = "/AdminPelis"> <input type = "submit" value = "Confirmar" ></a></p>
+    </form>
 </body>
 </html>
