@@ -19,5 +19,6 @@ class Persona(object):
             P.dni = item['dni']
             P.nombre = item['nombre']
             P.apellido = item['apellido']
+            P.contraseña = item['contraseña']
         return P
 

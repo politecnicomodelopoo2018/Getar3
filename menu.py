@@ -10,6 +10,7 @@ from reserva import Reserva
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
+contraseña_admin = "POLI"
 
 def Session():
     if not 'dni' in session:
@@ -18,6 +19,66 @@ def Session():
 @app.route('/')
 def Menu():
    return render_template('menu.html')
+
+@app.route('/MenuAdmin')
+def MenuAdmin():
+    return render_template('MenuAdmin.html')
+
+@app.route('/MostrarPelis')
+def MostrarPelis():
+    lista_pelis = Pelicula.ListarPeliculas()
+    return render_template('MostrarPelis.html', lista_pelis=lista_pelis)
+
+@app.route('/DarDeAltaPeli')
+def DarDeAltaPeli():
+    return render_template('/DarDeAltaPeli.html')
+
+@app.route('/DarDeAltaPeliAction',methods = ['POST','GET'])
+def DarDeAltaPeliAction():
+    P = Pelicula
+    P.nombre = request.form.get("nombre")
+    P.genero = request.form.get("genero")
+    P.estrellas = request.form.get("estrellas")
+    P.Dar_de_Alta_Pelicula()
+    return redirect('/MenuAdmin')
+
+@app.route('/DarDeBajaPeli',methods = ['POST','GET'])
+def DarDeBajaPeli():
+    lista_pelis = Pelicula.ListarPeliculas()
+    return render_template('/DarDeBajaPeli.html',lista_pelis=lista_pelis)
+
+@app.route('/DarDeBajaPeliAction',methods = ['POST','GET'])
+def DarDeBajaPeliAction():
+    idpeli = request.form.get("pelicula")
+    Pelicula.Dar_de_Baja_Pelicula(idpeli)
+    return redirect('/MenuAdmin')
+
+
+@app.route('/login_admin')
+def login_admin():
+    return render_template('login_admin.html')
+
+@app.route('/loginAdminAction',methods = ['POST', 'GET'])
+def loginAdminAction():
+    contraseña = request.form.get("contraseña_admin")
+    if contraseña == contraseña_admin:
+        session["dni"] = request.form.get("dni")
+        return redirect('/MenuAdmin')
+    else:
+        return redirect('/login_admin')
+
+@app.route('/registroAdmin')
+def registroAdmin():
+    return render_template("registroAdmin.html")
+
+@app.route('/registroAdminAction',methods = ['POST', 'GET'])
+def registroAdminAction():
+    p = Persona()
+    p.nombre = request.form.get('nombre')
+    p.apellido = request.form.get('apellido')
+    p.contraseña = contraseña_admin
+    p.Dar_de_Alta_Persona()
+    return redirect('/')
 
 @app.route('/login')
 def login():
@@ -28,11 +89,11 @@ def loginAction():
     contraseña = request.form.get("contraseña")
     i = request.form.get("dni")
     p = Persona.ObtenerDatosPersona(i)
-    if contraseña != p.contraseña:
-        return redirect('/login')
-    else:
+    if contraseña == p.contraseña:
         session["dni"] = request.form.get("dni")
         return redirect('/')
+    else:
+        return redirect('/login')
 
 @app.route('/signup')
 def signup():
@@ -54,11 +115,14 @@ def Cerrar_Serion():
 
 @app.route('/Pelis')
 def Pelis():
-    dni = session["dni"]
-    p = Persona.ObtenerDatosPersona(dni)
-    lista_peliculas = Pelicula.ListarPeliculas()
-    lista_cines = Cine.ListarCines()
-    return render_template('pelis.html', p=p, lista_peliculas=lista_peliculas, lista_cines=lista_cines)
+    if "dni" in session:
+        dni = session["dni"]
+        p = Persona.ObtenerDatosPersona(dni)
+        lista_peliculas = Pelicula.ListarPeliculas()
+        lista_cines = Cine.ListarCines()
+        return render_template('pelis.html', p=p, lista_peliculas=lista_peliculas, lista_cines=lista_cines)
+    else:
+
 
 @app.route('/horarios',methods = ['POST','GET'])
 def Fecha_Hora():
