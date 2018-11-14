@@ -1,11 +1,11 @@
 from flask import Flask, redirect, request, render_template, session
-from persona import Persona
-from pelicula import Pelicula
-from cine import Cine
-from horario import Horario
-from sala import Sala
-from butaca import Butaca
-from reserva import Reserva
+from tp_final.clases_tp_final.persona import Persona
+from tp_final.clases_tp_final.pelicula import Pelicula
+from tp_final.clases_tp_final.cine import Cine
+from tp_final.clases_tp_final.horario import Horario
+from tp_final.clases_tp_final.sala import Sala
+from tp_final.clases_tp_final.butaca import Butaca
+from tp_final.clases_tp_final.reserva import Reserva
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -162,10 +162,13 @@ def reservas():
 
 @app.route('/ver_reservas')
 def ver_reservas():
-    dni = session['dni']
-    Pe = Persona.ObtenerDatosPersona(dni)
-    lista_reservas = Reserva.ListarReservas(dni)
-    return render_template('ver_reservas.html', Pe=Pe, lista_reservas=lista_reservas)
+    if "dni" in session:
+        dni = session['dni']
+        Pe = Persona.ObtenerDatosPersona(dni)
+        lista_reservas = Reserva.ListarReservas(dni)
+        return render_template('ver_reservas.html', Pe=Pe, lista_reservas=lista_reservas)
+    else:
+        return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug = True)

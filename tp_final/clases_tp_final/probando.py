@@ -1,4 +1,4 @@
-from pelicula import Pelicula
+from tp_final.clases_tp_final.pelicula import Pelicula
 
 id = 1
 p = Pelicula.InfoPeli(id)

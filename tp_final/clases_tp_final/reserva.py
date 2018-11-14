@@ -1,7 +1,7 @@
-from db import DB
-from pelicula import Pelicula
-from horario import Horario
-from butaca import Butaca
+from tp_final.clases_tp_final.db import DB
+from tp_final.clases_tp_final.pelicula import Pelicula
+from tp_final.clases_tp_final.horario import Horario
+from tp_final.clases_tp_final.butaca import Butaca
 
 class Reserva(object):
     idReserva = None

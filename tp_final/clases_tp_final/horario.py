@@ -1,5 +1,5 @@
-from db import DB
-from sala import Sala
+from tp_final.clases_tp_final.db import DB
+from tp_final.clases_tp_final.sala import Sala
 
 class Horario(object):
     idHorario = None

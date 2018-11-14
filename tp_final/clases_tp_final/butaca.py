@@ -1,4 +1,4 @@
-from db import DB
+from tp_final.clases_tp_final.db import DB
 
 class Butaca(object):
     idButaca = None

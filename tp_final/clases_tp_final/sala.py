@@ -1,5 +1,5 @@
-from db import DB
-from butaca import Butaca
+from tp_final.clases_tp_final.db import DB
+from tp_final.clases_tp_final.butaca import Butaca
 
 class Sala(object):
     idSala = None

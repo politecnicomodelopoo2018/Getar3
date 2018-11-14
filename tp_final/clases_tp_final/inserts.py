@@ -1,8 +1,8 @@
-from pelicula import Pelicula
-from cine import Cine
-from sala import Sala
-from horario import Horario
-from butaca import Butaca
+from tp_final.clases_tp_final.pelicula import Pelicula
+from tp_final.clases_tp_final.cine import Cine
+from tp_final.clases_tp_final.sala import Sala
+from tp_final.clases_tp_final.horario import Horario
+from tp_final.clases_tp_final.butaca import Butaca
 
 P = Pelicula()
 P.idPelicula = 'NULL'

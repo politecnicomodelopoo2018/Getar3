@@ -1,5 +1,5 @@
-from db import DB
-from horario import Horario
+from tp_final.clases_tp_final.db import DB
+from tp_final.clases_tp_final.horario import Horario
 
 class Cine(object):
     idCine = None
