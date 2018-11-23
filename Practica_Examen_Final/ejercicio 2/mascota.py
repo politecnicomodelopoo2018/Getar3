@@ -10,7 +10,6 @@ class Mascota(object):
         self.lista_visitas = []
 
     def MascotaCumpleConVisitas(self,año):
-        cumple = False
         lista_visitas_año_actual = []
         for item in self.lista_visitas:
             if item.datetime.date.year == año:
@@ -21,7 +20,18 @@ class Mascota(object):
         return True
 
     def MascotasAsistenciaPerfecta(self):
-        for item in range(2000,2018):
-            if self.MascotaCumpleConVisitas(item) == False
+        for item in range(self.fecha_nacimiento.year,datetime.today().year):
+            if self.MascotaCumpleConVisitas(item) == False:
                 return False
         return True
+
+class Perro(Mascota):
+    raza = None
+    visitas_minimas = 4
+
+class Gato(Mascota):
+    raza = None
+    visitas_minimas = 2
+
+class Tortuga(Mascota):
+    visitas_minimas = 1
